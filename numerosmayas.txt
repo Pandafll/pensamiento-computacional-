@@ -1,0 +1,73 @@
+opcion = 0
+
+while opcion != 4:
+    print("\n" + "="*20)
+    print("      MENÚ")
+    print("="*20)
+    print("1. Saludar")
+    print("2. Decimal a Maya")
+    print("3. Decimal a Binario")
+    print("4. Salir")
+    
+    try:
+        opcion = int(input("\nElige una opción: "))
+    except ValueError:
+        print("❌ Error: Por favor, ingresa un número válido.")
+        continue
+
+    if opcion == 1:
+        print("\n👋 ¡Hola! Bienvenido al conversor numérico.")
+
+    elif opcion == 2:
+        print("\n--- Módulo Maya (Base 20) ---")
+        try:
+            num = int(input("Ingresa un número decimal (entero positivo): "))
+            original = num
+            
+            if num < 0:
+                print("Por favor, usa números positivos.")
+            elif num == 0:
+                print("Nivel 1: [ @ ] (Caracol/Semilla)")
+            else:
+                potencia = 0
+                while 20**(potencia + 1) <= num:
+                    potencia += 1
+                
+                print(f"\nRepresentación de {original}:")
+                for i in range(potencia, -1, -1):
+                    divisor = 20**i
+                    coeficiente = num // divisor
+                    num %= divisor
+                    
+                    puntos = coeficiente % 5
+                    barras = coeficiente // 5
+                    
+                    print(f"Nivel {i+1}:")
+                    if coeficiente == 0:
+                        print("  ( @ )")
+                    else:
+                        if puntos > 0:
+                            print("  " + "● " * puntos)
+                        for _ in range(barras):
+                            print("  " + "—————")
+                print("-" * 20)
+        except ValueError:
+            print("❌ Entrada no válida.")
+
+    elif opcion == 3:
+        print("\n--- Módulo Binario (Base 2) ---")
+        try:
+            num = int(input("Ingresa un número decimal: "))
+            if num == 0:
+                print("Resultado: 0")
+            else:
+                binario = bin(num).replace("0b", "")
+                print(f"{num} (decimal) = {binario} (binario)")
+        except ValueError:
+            print("❌ Entrada no válida.")
+
+    elif opcion == 4:
+        print("\n¡Hasta luego! Gracias por usar el programa.")
+
+    else:
+        print("❌ Opción no válida, intenta de nuevo.")
