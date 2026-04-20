@@ -1,0 +1,210 @@
+def longitud():
+    while True:
+        print(" CONVERSION DE LONGITUD ")
+        print("1. Metros")
+        print("2. Kilometros")
+        print("3. Pies")
+        print("4. Pulgadas")
+        print("5. Volver al menu principal")
+
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == "5":
+            break
+
+        valor = float(input("Ingrese el valor a convertir: "))
+
+        print("\nConvertir a:")
+        print("1. Metros")
+        print("2. Kilometros")
+        print("3. Pies")
+        print("4. Pulgadas")
+
+        destino = input("Seleccione la unidad destino: ")
+
+  
+        if opcion == "1":
+            metros = valor
+        elif opcion == "2":
+            metros = valor * 1000
+        elif opcion == "3":
+            metros = valor * 0.3048
+        elif opcion == "4":
+            metros = valor * 0.0254
+        else:
+            print("Opcion invalida")
+            continue
+
+        if destino == "1":
+            resultado = metros
+        elif destino == "2":
+            resultado = metros / 1000
+        elif destino == "3":
+            resultado = metros / 0.3048
+        elif destino == "4":
+            resultado = metros / 0.0254
+        else:
+            print("Opcion invalida")
+            continue
+
+        print("Resultado:", resultado)
+
+
+def masa():
+    while True:
+        print("\n--- CONVERSION DE MASA ---")
+        print("1. Kilogramos")
+        print("2. Gramos")
+        print("3. Libras")
+        print("4. Volver al menu principal")
+
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == "4":
+            break
+
+        valor = float(input("Ingrese el valor: "))
+
+        print("\nConvertir a:")
+        print("1. Kilogramos")
+        print("2. Gramos")
+        print("3. Libras")
+
+        destino = input("Seleccione: ")
+
+        if opcion == "1":
+            kg = valor
+        elif opcion == "2":
+            kg = valor / 1000
+        elif opcion == "3":
+            kg = valor * 0.453592
+        else:
+            print("Opcion invalida")
+            continue
+
+        if destino == "1":
+            resultado = kg
+        elif destino == "2":
+            resultado = kg * 1000
+        elif destino == "3":
+            resultado = kg / 0.453592
+        else:
+            print("Opcion invalida")
+            continue
+
+        print("Resultado:", resultado)
+
+
+def volumen():
+    while True:
+        print(" CONVERSION DE VOLUMEN ")
+        print("1. Litros")
+        print("2. Mililitros")
+        print("3. Metros cubicos")
+        print("4. Volver")
+
+        opcion = input("Seleccione: ")
+
+        if opcion == "4":
+            break
+
+        valor = float(input("Ingrese valor: "))
+
+        print("\nConvertir a:")
+        print("1. Litros")
+        print("2. Mililitros")
+        print("3. Metros cubicos")
+
+        destino = input("Seleccione: ")
+
+        if opcion == "1":
+            litros = valor
+        elif opcion == "2":
+            litros = valor / 1000
+        elif opcion == "3":
+            litros = valor * 1000
+        else:
+            print("Opcion invalida")
+            continue
+
+        if destino == "1":
+            resultado = litros
+        elif destino == "2":
+            resultado = litros * 1000
+        elif destino == "3":
+            resultado = litros / 1000
+        else:
+            print("Opcion invalida")
+            continue
+
+        print("Resultado:", resultado)
+
+
+def superficie():
+    while True:
+        print(" CONVERSION DE SUPERFICIE ")
+        print("1. Metros cuadrados")
+        print("2. Kilometros cuadrados")
+        print("3. Pies cuadrados")
+        print("4. Volver")
+
+        opcion = input("Seleccione: ")
+
+        if opcion == "4":
+            break
+
+        valor = float(input("Ingrese valor: "))
+
+        print("\nConvertir a:")
+        print("1. Metros cuadrados")
+        print("2. Kilometros cuadrados")
+        print("3. Pies cuadrados")
+
+        destino = input("Seleccione: ")
+
+        if opcion == "1":
+            m2 = valor
+        elif opcion == "2":
+            m2 = valor * 1000000
+        elif opcion == "3":
+            m2 = valor * 0.092903
+        else:
+            print("Opcion invalida")
+            continue
+
+        if destino == "1":
+            resultado = m2
+        elif destino == "2":
+            resultado = m2 / 1000000
+        elif destino == "3":
+            resultado = m2 / 0.092903
+        else:
+            print("Opcion invalida")
+            continue
+
+        print("Resultado:", resultado)
+
+
+while True:
+    print(" MENU PRINCIPAL ")
+    print("1. Longitud")
+    print("2. Superficie")
+    print("3. Volumen")
+    print("4. Masa")
+    print("5. Salir")
+
+    opcion = input("Seleccione una opcion: ")
+
+    if opcion == "1":
+        longitud()
+    elif opcion == "2":
+        superficie()
+    elif opcion == "3":
+        volumen()
+    elif opcion == "4":
+        masa()
+    elif opcion == "5":
+        print("Programa finalizado")
+        break
+    else:
+        print("Opcion invalida")
