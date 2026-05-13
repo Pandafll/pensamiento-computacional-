@@ -1,0 +1,97 @@
+import tkinter as tk
+
+# Datos
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+
+azucar = [105, 145, 120, 98, 155]
+sal = [1800, 2100, 2500, 1900, 2600]
+
+presion = [
+    (118, 76),
+    (128, 79),
+    (135, 88),
+    (112, 72),
+    (145, 92)
+]
+
+# Ventana
+ventana = tk.Tk()
+ventana.title("Monitoreo de Salud")
+ventana.geometry("500x400")
+
+# Variable para guardar el día seleccionado
+dia_seleccionado = tk.StringVar()
+dia_seleccionado.set(dias[0])
+
+# Selector de días
+menu_dias = tk.OptionMenu(ventana, dia_seleccionado, *dias)
+menu_dias.pack(pady=10)
+
+# Caja de texto
+texto = tk.Text(ventana, width=60, height=15)
+texto.pack()
+
+# Función para mostrar datos
+def mostrar_datos():
+
+    # Limpiar texto anterior
+    texto.delete(1.0, tk.END)
+
+    # Buscar índice del día seleccionado
+    i = dias.index(dia_seleccionado.get())
+
+    texto.insert(tk.END, f"\nDía seleccionado: {dias[i]}\n\n")
+
+    # Azúcar
+    texto.insert(tk.END, f"Nivel de azúcar: {azucar[i]} mg/dL\n")
+
+    if 70 <= azucar[i] <= 140:
+        texto.insert(tk.END, "Estado: azúcar estable\n")
+    else:
+        texto.insert(tk.END, "Advertencia: nivel de azúcar fuera de rango\n")
+
+    texto.insert(tk.END, "\n")
+
+    # Sal
+    texto.insert(tk.END, f"Consumo de sal: {sal[i]} mg\n")
+
+    if sal[i] <= 2300:
+        texto.insert(tk.END, "Estado: consumo adecuado\n")
+    else:
+        texto.insert(tk.END, "Advertencia: exceso de sal\n")
+
+    texto.insert(tk.END, "\n")
+
+    # Presión
+    sistolica = presion[i][0]
+    diastolica = presion[i][1]
+
+    texto.insert(
+        tk.END,
+        f"Presión arterial: {sistolica}/{diastolica}\n"
+    )
+
+    if sistolica < 120 and diastolica < 80:
+        texto.insert(tk.END, "Resultado: presión normal\n")
+
+    elif 120 <= sistolica <= 129 and diastolica < 80:
+        texto.insert(tk.END, "Resultado: presión elevada\n")
+
+    elif (130 <= sistolica <= 139) or (80 <= diastolica <= 89):
+        texto.insert(tk.END, "Resultado: hipertensión nivel 1\n")
+
+    elif sistolica >= 140 or diastolica >= 90:
+        texto.insert(tk.END, "Resultado: hipertensión nivel 2\n")
+
+# Botón
+boton = tk.Button(
+    ventana,
+    text="Ver Resultados",
+    command=mostrar_datos
+)
+boton.pack(pady=10)
+
+# Ejecutar ventana
+ventana.mainloop()
+
+
